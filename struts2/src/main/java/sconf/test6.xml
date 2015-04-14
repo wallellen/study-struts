@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 测试6，配制式表单验证 -->
+	<package name="test6" namespace="/test6" extends="default">
+		<action name="*" class="edu.alvin.struts2.action.Test6Action" method="{1}">
+			<result name="input">/WEB-INF/jsp/test6/input.jsp</result>
+			<result name="submit" type="redirectAction">result?account=${user.account}</result>	<!-- 重定向跳转，重定向到Action -->
+			<result name="result">/WEB-INF/jsp/test6/result.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 测试7，引发异常 -->
+	<package name="test7" namespace="/test7" extends="default">
+		<global-results>
+			<result name="except">/WEB-INF/jsp/test7/except.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="except" exception="java.sql.SQLException">
+				<param name="name">Hello</param>
+			</exception-mapping>
+		</global-exception-mappings>
+		
+		<action name="*" class="edu.alvin.struts2.action.Test7Action" method="{1}">
+			<result name="input">/WEB-INF/jsp/test7/input.jsp</result>
+		</action>
+	</package>
+</struts>

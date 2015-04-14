@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+	<field name="user.account">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请输入正确的账号</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="trim">true</param>
+			<param name="minLength">3</param>
+			<param name="maxLength">20</param>
+			<message>请输入正确的账号（${minLength}~${maxLength}个字符，可包含数字、字母、点、下划线或短横线）</message>
+		</field-validator>
+	</field>
+
+	<field name="user.password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请输入正确的密码</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>
+			<param name="maxLength">20</param>
+			<message>请输入正确的密码（${minLength}~${maxLength}个字符，可包含数字、字母、点、下划线或短横线）</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.passwordAck">
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[user.password==user.passwordAck]]></param>
+			<message>两次输入的密码必须一致</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.name">
+		<field-validator type="requiredstring">
+            <param name="trim">true</param>
+			<message>名称不能为空</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.gender">
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[(user.gender=="M") || (user.gender=="F")]]></param>
+			<message>无效的性别</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.email">
+		<field-validator type="email">
+			<param name="trim">true</param>
+			<message>无效的电子邮件格式</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.telephone">
+		<field-validator type="regex">
+			<param name="regexExpression"><![CDATA[^\(?0\d{2}[\)\-\s]?\d{8}$|^\(?0\d{3}[\)\-\s]?\d{7}$|^1\d{10}$]]></param>
+			<message>无效的电话号码格式</message>
+		</field-validator>
+	</field>
+</validators>

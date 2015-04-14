@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.extension" value="do,action" />	<!-- 修改控制器类扩展名为*.do或*.action，默认为*.action -->
+	<constant name="struts.i18n.encoding" value="UTF-8"/>	<!-- 编码方式 -->
+	<constant name="struts.devMode" value="true" />		<!-- 开发模式开关 -->
+	<constant name="struts.configuration.xml.reload" value="true" />	<!-- 配置文件修改后重新加载 -->
+	<constant name="struts.serve.static.browserCache " value="false" />	<!-- 浏览器缓存开关  -->
+	<constant name="struts.ui.theme" value="simple" />		<!-- 简单布局样式 -->
+	<constant name="struts.objectFactory" value="spring" />	<!-- 集成Spring -->
+	<constant name="struts.enable.SlashesInActionNames" value="true" />	<!-- 在Action名称中使用斜杠 -->
+	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>	<!-- 关闭总是使用完整命名空间匹配 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />	<!-- 启用Action动态方法调用 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />	<!-- 允许ognl表达式访问静态量 -->
+	
+	<package name="default" abstract="true" extends="json-default">
+	<!-- 
+		<default-action-ref name="notFound"/>
+		<action name="notFound">
+            <result>/WEB-INF/content/error/404.jsp</result>
+        </action>
+	 -->
+	</package>
+	
+	<!-- 包含指定的模块 -->
+	<include file="sconf/test1.xml"/>
+	<include file="sconf/test2.xml"/>
+	<include file="sconf/test3.xml"/>
+	<include file="sconf/test4.xml"/>
+	<include file="sconf/test5.xml"/>
+	<include file="sconf/test6.xml"/>
+	<include file="sconf/test7.xml"/>
+</struts>

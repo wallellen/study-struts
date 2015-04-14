@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 测试1，基本Action类 -->
+	<package name="test1" namespace="/test1" extends="default">
+		<action name="input" class="edu.alvin.struts2.action.Test1Action" method="input">
+			<result name="success">/WEB-INF/jsp/test1/input.jsp</result>
+		</action>
+	</package>
+</struts>

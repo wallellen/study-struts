@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+.clearfix:after{content:".";display:block;clear:both;height:0;font-size:0;visibility:hidden;}
+.clearfix{_zoom:1;_height:1%;overflow:hidden;}
+
+body,button,input,select,textarea,ul,li{font: 14px/1.5 "Microsoft Yahei", tahoma,arial;margin:0;padding:0}
+ul li{list-style:none;}
+a{text-decoration:none;color:#399ff2}
+
+#wrap{width:960px;margin:10px auto}
+
+div.message{text-align:center;font-weight:bold;font-size:14px;color:#ff4646}
+div.title{background:#3f64f8;color:#eee;font-size:20px;padding:5px;box-shadow:#666 1px 1px 5px 0px}
+ul.list,div.content{margin:0;padding:20px 10px;border:1px solid #555;box-shadow:#666 1px 1px 5px 0px}
+ul.list li{padding:0;float:left;margin-right:20px}
+ul.list li a{display:block;background:#ffcab0;padding:5px;width:190px;margin:5px;text-align:center;font-weight:bold;}
+ul.list li a:hover{background:#ff5f11;color:#eee}
+
+div.nav{border-bottom:1px solid #666;color:#666;padding:5px 0;margin:3px auto}
+
+.error{color:#ff0080;font-weight:bold;}
+
+.page{margin:10px 5px}
+.page ul{padding:0;margin:0;float:right;margin-right:100px}
+.page ul li{float:left;padding:3px}
+.page ul li a,.page ul li b{border:1px solid #aaa;padding:1px 6px;margin-right:8px;font-weight:normal;}
+.page ul li a:hover{background:#aaa;color:#fff}

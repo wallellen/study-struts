@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 测试4，动态方法 -->
+	<package name="test4" namespace="/test4" extends="default">
+		<action name="action" class="edu.alvin.struts2.action.Test4Action">
+			<result name="input">/WEB-INF/jsp/test4/input.jsp</result>
+			<result name="submit" type="redirectAction">action!result</result>	<!-- 重定向跳转，重定向到Action -->
+			<result name="result">/WEB-INF/jsp/test4/result.jsp</result>
+		</action>
+	</package>
+</struts>

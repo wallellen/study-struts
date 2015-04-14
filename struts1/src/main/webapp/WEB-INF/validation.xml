@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN" 
+								 "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+<form-validation>
+	<!-- 定义全局验证器
+	<global>
+		<validator name="dateRange" 
+				   classname="edu.alvin.struts.validator.FormValidator" 
+				   method="validateDateRange"
+				   methodParams="java.lang.Object,
+						  org.apache.commons.validator.ValidatorAction,
+						  org.apache.commons.validator.Field,
+						  org.apache.struts.action.ActionMessages,
+						  org.apache.commons.validator.Validator,
+						  javax.servlet.http.HttpServletRequest"
+				   msg="errors.dateRange">
+		</validator>
+	</global>
+	 -->
+	
+	<formset>
+	
+		<!-- 设置要验证的表单对象 -->
+		<form name="/test6/submit">
+			
+			<!-- 账号字段验证规则 -->
+			<field property="account" depends="required,maxlength,minlength">
+				<msg name="required" key="error.form.account" />	<!-- 设置消息资源的key -->
+				<msg name="maxlength" key="error.form.account" />
+				<msg name="minlength" key="error.form.account" />
+				
+				<arg position="0" key="${var:minlength}" resource="false" />	<!-- 设置资源字符串参数 -->
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>3</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+			
+			<!-- 密码字段验证规则 -->
+			<field property="password" depends="required,mask">
+				<msg name="required" key="error.form.password" />
+				<msg name="mask" key="error.form.password" />
+				
+				<arg position="0" key="6" resource="false" />
+				<arg position="1" key="20" resource="false" />
+
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[A-Za-z0-9\-\_\.]{6,20}$</var-value>
+				</var>				
+			</field>
+			
+			<!-- 确认密码字段验证规则 -->
+			<field property="passwordAck" depends="validwhen">
+				<msg name="validwhen" key="error.form.passwordAck" />
+
+				<var>
+					<var-name>test</var-name>
+					<var-value>(password==passwordAck)</var-value>
+				</var>				
+			</field>
+			
+			<!-- 姓名字段验证规则 -->
+			<field property="name" depends="required">
+				<msg name="required" key="error.form.name" />
+			</field>
+			
+			<!-- 性别字段验证规则 -->
+			<field property="gender" depends="validwhen">
+				<msg name="validwhen" key="error.form.gender" />
+
+				<var>
+					<var-name>test</var-name>
+					<var-value>((gender=="M") or (gender=="F"))</var-value>
+				</var>				
+			</field>
+			
+			<!-- 生日字段验证规则 -->
+			<field property="birthday" depends="required,date">
+				<msg name="required" key="error.form.date" />
+				<msg name="date" key="error.form.date" />
+
+				<var>
+					<var-name>datePattern</var-name>
+					<var-value>yyyy-MM-dd</var-value>
+				</var>
+			</field>
+			
+			<!-- 电话号码字段验证规则 -->
+			<field property="telephone" depends="mask">
+				<msg name="mask" key="error.form.telephone" />
+				
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^\(?0\d{2}[\)\-\s]?\d{8}$|^\(?0\d{3}[\)\-\s]?\d{7}$|^1\d{10}$</var-value>
+				</var>
+			</field>
+			
+			<!-- 电子邮件字段验证规则 -->
+			<field property="email" depends="email">
+				<msg name="email" key="error.form.email" />
+			</field>
+		</form>
+		
+		<!-- 设置要验证的表单对象 -->
+		<form name="/test7/submit">
+			
+			<!-- 账号字段验证规则 -->
+			<field property="account" depends="required,maxlength,minlength">
+				<msg name="required" key="error.form.account" />	<!-- 设置消息资源的key -->
+				<msg name="maxlength" key="error.form.account" />
+				<msg name="minlength" key="error.form.account" />
+				
+				<arg position="0" key="${var:minlength}" resource="false" />	<!-- 设置资源字符串参数 -->
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>3</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+			
+			<!-- 密码字段验证规则 -->
+			<field property="password" depends="required,mask">
+				<msg name="required" key="error.form.password" />
+				<msg name="mask" key="error.form.password" />
+				
+				<arg position="0" key="6" resource="false" />
+				<arg position="1" key="20" resource="false" />
+
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[A-Za-z0-9\-\_\.]{6,20}$</var-value>
+				</var>				
+			</field>
+			
+			<!-- 确认密码字段验证规则 -->
+			<field property="passwordAck" depends="validwhen">
+				<msg name="validwhen" key="error.form.passwordAck" />
+
+				<var>
+					<var-name>test</var-name>
+					<var-value>(password==passwordAck)</var-value>
+				</var>				
+			</field>
+			
+			<!-- 姓名字段验证规则 -->
+			<field property="name" depends="required">
+				<msg name="required" key="error.form.name" />
+			</field>
+			
+			<!-- 性别字段验证规则 -->
+			<field property="gender" depends="validwhen">
+				<msg name="validwhen" key="error.form.gender" />
+
+				<var>
+					<var-name>test</var-name>
+					<var-value>((gender=="M") or (gender=="F"))</var-value>
+				</var>				
+			</field>
+			
+			<!-- 生日字段验证规则 -->
+			<field property="birthday" depends="required,date">
+				<msg name="required" key="error.form.date" />
+				<msg name="date" key="error.form.date" />
+
+				<var>
+					<var-name>datePattern</var-name>
+					<var-value>yyyy-MM-dd</var-value>
+				</var>
+			</field>
+			
+			<!-- 电话号码字段验证规则 -->
+			<field property="telephone" depends="mask">
+				<msg name="mask" key="error.form.telephone" />
+				
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^\(?0\d{2}[\)\-\s]?\d{8}$|^\(?0\d{3}[\)\-\s]?\d{7}$|^1\d{10}$</var-value>
+				</var>
+			</field>
+			
+			<!-- 电子邮件字段验证规则 -->
+			<field property="email" depends="email">
+				<msg name="email" key="error.form.email" />
+			</field>
+		</form>
+		
+	</formset>
+</form-validation>

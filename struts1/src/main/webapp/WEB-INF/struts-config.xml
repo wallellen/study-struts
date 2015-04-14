@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">  
+
+<struts-config>
+	<!-- FormBean类配置 -->
+	<form-beans>
+		<form-bean name="valueForm" type="edu.alvin.struts.form.ValueForm" />
+		<form-bean name="numberForm" type="edu.alvin.struts.form.NumberForm" />
+		<form-bean name="userForm1" type="edu.alvin.struts.form.UserForm1" />
+		<form-bean name="userForm2" type="edu.alvin.struts.form.UserForm2" />
+		<!-- 配置动态表单 -->
+		<form-bean name="userForm3" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property initial="" name="account" type="java.lang.String" />
+			<form-property initial="" name="password" type="java.lang.String" />
+			<form-property initial="" name="passwordAck" type="java.lang.String" />
+			<form-property initial="" name="name" type="java.lang.String" />
+			<form-property initial="M" name="gender" type="java.lang.String" />
+			<form-property initial="" name="email" type="java.lang.String" />
+			<form-property initial="" name="telephone" type="java.lang.String" />
+			<form-property name="birthday" type="java.sql.Date" />
+		</form-bean>
+	</form-beans>
+
+	<!-- 全局异常处理配置 -->
+	<global-exceptions />
+
+	<!-- 全局跳转配置 -->
+	<global-forwards />
+
+	<!-- 业务Action配置 -->
+	<action-mappings>
+	
+		<!-- 测试1，Action类 -->
+		<action path="/test1/input" type="edu.alvin.struts.action.Test1Action">
+			<forward name="success" path="/WEB-INF/jsp/test1/input.jsp" />
+		</action>
+		
+		<!-- 测试2，MappingDispatchAction类 -->
+		<action path="/test2/input" name="valueForm" validate="false"
+				type="edu.alvin.struts.action.Test2Action" 
+				scope="request" parameter="input">
+			<forward name="success" path="/WEB-INF/jsp/test2/input.jsp" />
+		</action>
+		<action path="/test2/result" forward="/WEB-INF/jsp/test2/result.jsp" />	<!-- 纯跳转Action -->
+		<action path="/test2/submit" name="valueForm" validate="false"
+				type="edu.alvin.struts.action.Test2Action" scope="request" 
+				parameter="submit" input="/WEB-INF/jsp/test2/input.jsp">
+			<forward name="success" path="/test2/result.do" redirect="true" />		<!-- 重定向方式 -->
+		</action>
+		
+		<!-- 测试3，DispatchAction类 -->
+		<action path="/test3/result" forward="/WEB-INF/jsp/test3/result.jsp" />	<!-- 纯跳转Action -->
+		<action path="/test3/action" name="valueForm" validate="false"
+				type="edu.alvin.struts.action.Test3Action" scope="request" parameter="func">
+			<forward name="input" path="/WEB-INF/jsp/test3/input.jsp" />
+			<forward name="result" path="/test3/result.do" redirect="true" />		<!-- 重定向方式 -->
+		</action>
+		
+		<!-- 测试4，LookupDispatchAction -->
+		<action path="/test4/action" name="numberForm" validate="false"
+				type="edu.alvin.struts.action.Test4Action"
+				scope="request" parameter="method">
+			<forward name="input" path="/WEB-INF/jsp/test4/input.jsp" />
+			<forward name="result" path="/WEB-INF/jsp/test4/result.jsp" />		<!-- 重定向方式 -->
+		</action>
+		
+		<!-- 测试5，编程式表单验证 -->
+		<action path="/test5/input" name="userForm1" validate="false"
+				type="edu.alvin.struts.action.Test5Action" 
+				scope="request" parameter="input">
+			<forward name="success" path="/WEB-INF/jsp/test5/input.jsp" />
+		</action>
+		<action path="/test5/submit" name="userForm1" validate="true"
+				input="/WEB-INF/jsp/test5/input.jsp"
+				type="edu.alvin.struts.action.Test5Action" 
+				scope="request" parameter="submit">
+			<forward name="success" path="/test5/result.do?uid={0}" redirect="true" />
+		</action>
+		<action path="/test5/result"
+				type="edu.alvin.struts.action.Test5Action"
+				parameter="result">
+			<forward name="success" path="/WEB-INF/jsp/test5/result.jsp" />		
+		</action>
+		
+		<!-- 测试6，配置式表单验证 -->
+		<action path="/test6/input" name="userForm2" validate="false"
+				type="edu.alvin.struts.action.Test6Action" 
+				scope="request" parameter="input">
+			<forward name="success" path="/WEB-INF/jsp/test6/input.jsp" />
+		</action>
+		<action path="/test6/submit" name="userForm2" validate="true"
+				input="/WEB-INF/jsp/test6/input.jsp"
+				type="edu.alvin.struts.action.Test6Action" 
+				scope="request" parameter="submit">
+			<forward name="success" path="/test6/result.do?uid={0}" redirect="true" />
+		</action>
+		<action path="/test6/result"
+				type="edu.alvin.struts.action.Test6Action"
+				parameter="result">
+			<forward name="success" path="/WEB-INF/jsp/test6/result.jsp" />		
+		</action>
+		
+		<!-- 测试7，配置式表单验证 -->
+		<action path="/test7/input" name="userForm3" validate="false"
+				type="edu.alvin.struts.action.Test7Action" 
+				scope="request" parameter="input">
+			<forward name="success" path="/WEB-INF/jsp/test7/input.jsp" />
+		</action>
+		<action path="/test7/submit" name="userForm3" validate="true"
+				input="/WEB-INF/jsp/test7/input.jsp"
+				type="edu.alvin.struts.action.Test7Action" 
+				scope="request" parameter="submit">
+			<forward name="success" path="/test7/result.do?uid={0}" redirect="true" />
+		</action>
+		<action path="/test7/result"
+				type="edu.alvin.struts.action.Test7Action"
+				parameter="result">
+			<forward name="success" path="/WEB-INF/jsp/test7/result.jsp" />		
+		</action>
+		
+		<!-- 测试8，整合Spring -->
+		<action path="/test8/action" parameter="action">
+			<forward name="success" path="/WEB-INF/jsp/test8/action.jsp" />
+		</action>
+		
+		<!-- 测试9，异常处理 -->
+		<action path="/test9/action" parameter="func">
+			<exception type="java.sql.SQLException" key="error.exception.sql" path="/WEB-INF/jsp/test9/exception.jsp" 
+				handler="edu.alvin.struts.handler.ErrorCodeExceptionHandler" />
+			<forward name="success" path="/WEB-INF/jsp/test9/action.jsp" />
+		</action>
+		
+	</action-mappings>
+	
+	<!-- 配置spring控制器 -->
+	<controller processorClass="org.springframework.web.struts.DelegatingRequestProcessor" />
+
+	<!-- 国际化资源 -->
+	<message-resources parameter="ApplicationResources" />
+	
+	<!-- 配置验证规则 -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/org/apache/struts/validator/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+	
+	<!-- 配置spring上下文插件 -->
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/WEB-INF/applicationContext.xml" />
+	</plug-in>
+</struts-config>
